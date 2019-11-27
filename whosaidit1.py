@@ -15,19 +15,19 @@ Help provided by W3Schools
 def normalize(word):
     return "".join(letter for letter in word if letter.isalpha()).lower()
 
-# get_counts
+# getCounts
 # -----
 # This function takes a filename and generates a dictionary
 # whose keys are the unique words in the file and whose
 # values are the counts for those words.
-def get_counts(filename):
+def getCounts(filename):
     text = open(filename, "r")
     text = text.read()
     text = text.split()
-    for i in range(len(text)-1):
+    for i in range(len(text) - 1):
         text[i] = normalize(text[i])
 
-    result_dict = {}
+    result_dict = {"_total": 0}
     for currentElement in text:
         if currentElement not in result_dict:
             result_dict[currentElement] = 1
@@ -37,14 +37,14 @@ def get_counts(filename):
 
 # Get the counts for the two shortened versions
 # of the texts
-shakespeare_counts = get_counts("hamlet-short.txt")
-austen_counts = get_counts("pride-and-prejudice-short.txt")
+shakespeareCounts = getCounts("hamlet-short.txt")
+austenCounts = getCounts("pride-and-prejudice-short.txt")
 del austenCounts[""]
 austenCounts["_total"] -= 1
 
 # Check the contents of the dictionaries
-for key in shakespeare_counts:
-    print(key + ": " + str(shakespeare_counts[key]))
+for key in shakespeareCounts:
+    print(key + ": " + str(shakespeareCounts[key]))
 print("-----")
-for key in austen_counts:
-    print(key + ": " + str(austen_counts[key]))
+for key in austenCounts:
+    print(key + ": " + str(austenCounts[key]))
