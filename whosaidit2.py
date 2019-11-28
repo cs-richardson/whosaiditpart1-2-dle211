@@ -1,6 +1,6 @@
 """
-This program prints specific words and the amount of times they appear in the
-full version of Hamlet and Pride and Prejudice.
+This program prints every word and the amount of times they appear in a short
+version of Hamlet and Pride and Prejudice.
 Foundation provided by Ms. Richardson
 Edits done by Justin
 Help provided by W3Schools
@@ -27,28 +27,21 @@ def getCounts(filename):
     for i in range(len(text) - 1):
         text[i] = normalize(text[i])
 
-    result_dict = {
-        "heart": 0,
-        "thou": 0,
-        "king": 0,
-        "happiness": 0,
-        "dance": 0
-        }
+    result_dict = {"_total": 0}
     for word in text:
-        if word in result_dict:
+        if word not in result_dict:
+            result_dict[word] = 1
+        elif word in result_dict:
             result_dict[word] += 1
-    if filename == "hamlet.txt":
-        result_dict.pop("happiness")
-        result_dict.pop("dance")
-    elif filename == "pride-and-prejudice.txt":
-        result_dict.pop("thou")
-        result_dict.pop("king")
+        result_dict["_total"] += 1
     return result_dict
 
 # Get the counts for the two shortened versions
 # of the texts
 shakespeareCounts = getCounts("hamlet.txt")
 austenCounts = getCounts("pride-and-prejudice.txt")
+del austenCounts[""]
+austenCounts["_total"] -= 1
 
 # Check the contents of the dictionaries
 for key in shakespeareCounts:
