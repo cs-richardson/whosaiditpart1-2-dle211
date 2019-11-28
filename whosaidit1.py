@@ -33,6 +33,7 @@ def getCounts(filename):
             result_dict[currentElement] = 1
         elif currentElement in result_dict:
             result_dict[currentElement] += 1
+        result_dict["_total"] += 1
     return result_dict
 
 # Get the counts for the two shortened versions
