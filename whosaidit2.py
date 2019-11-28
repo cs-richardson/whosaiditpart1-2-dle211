@@ -34,9 +34,9 @@ def getCounts(filename):
         "happiness": 0,
         "dance": 0
         }
-    for currentElement in text:
-        if currentElement in result_dict:
-            result_dict[currentElement] += 1
+    for word in text:
+        if word in result_dict:
+            result_dict[word] += 1
     if filename == "hamlet.txt":
         result_dict.pop("happiness")
         result_dict.pop("dance")
